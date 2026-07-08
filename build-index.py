@@ -15,9 +15,10 @@ mono  = b64(FONTS / "SpaceMono-Bold.ttf", "font/ttf")
 # slug, name, tagline, status ('live'|'soon'), accent
 AGENCIES = [
     ("bmf", "BMF", "Home of the Long Idea. A one-line ALDI brief to a finished film.", "live"),
-    ("uncommon", "Uncommon", "Coming soon.", "soon"),
-    ("lego", "LEGO", "Coming soon.", "soon"),
-    ("alien-baby", "Alien Baby", "Coming soon.", "soon"),
+    ("uncommon", "Uncommon", "An AI operating system for the agency. A one-line ALDI brief to a finished film.", "live"),
+    ("lego", "LEGO", "An AI operating system for the agency. A one-line ALDI brief to a finished film.", "live"),
+    ("alt-shift", "Alt/Shift", "An AI operating system for the agency. A one-line ALDI brief to a finished film.", "live"),
+    ("alien-baby", "Alien Baby", "An AI operating system for the agency. A one-line ALDI brief to a finished film.", "live"),
 ]
 
 def card(slug, name, tagline, status):
