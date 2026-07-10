@@ -3,7 +3,7 @@
 Add an agency to AGENCIES and re-run. Each deck lives at <slug>/index.html."""
 import base64, pathlib
 
-ROOT = pathlib.Path("/Users/tommyhyde/aiden-colleague-decks")
+ROOT = pathlib.Path(__file__).resolve().parent
 FONTS = pathlib.Path("/Users/tommyhyde/geoff/assets/fonts")
 
 def b64(p, mime):
@@ -15,6 +15,8 @@ mono  = b64(FONTS / "SpaceMono-Bold.ttf", "font/ttf")
 # slug, name, tagline, status ('live'|'soon'), accent
 AGENCIES = [
     ("bmf", "BMF", "Home of the Long Idea. A one-line ALDI brief to a finished film.", "live"),
+    ("town-square", "Town Square", "Cultured Creativity, now with memory. Built from Town Square's own brain, a one-line ALDI brief to a finished film.", "live"),
+    ("kerfuffle", "Kerfuffle", "Built to command attention. From Kerfuffle's own brain, a one-line ALDI brief to a finished film.", "live"),
     ("uncommon", "Uncommon", "An AI operating system for the agency. A one-line ALDI brief to a finished film.", "live"),
     ("lego", "LEGO", "An AI operating system for the agency. A one-line ALDI brief to a finished film.", "live"),
     ("alt-shift", "Alt/Shift", "An AI operating system for the agency. A one-line ALDI brief to a finished film.", "live"),
