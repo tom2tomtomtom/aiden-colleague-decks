@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
-"""Build the GENERIC (no agency name) two-part experience:
+"""Build the GENERIC (no agency name) two-part experience as ONE narrative:
 
-  generic/index.html            THE AIDEN STORY - the full aiden-deck slide
-                                machine (vendored as aiden-story.html), plus a
-                                story-nav, a live hub-screenshot slide after
-                                "in production today", and a closing bridge
-                                slide into part two.
+  generic/index.html            THE AIDEN STORY - reassembled from the
+                                aiden-deck slides (vendored as
+                                aiden-story.html) into a single arc:
+                                this is AIDEN -> the tools people use ->
+                                live proof (hub screenshot) -> the turn (the
+                                tech is a brain, and brains are nurtured) ->
+                                the moat -> what if your company had its own
+                                phantom brain -> this is Colleague -> bridge
+                                into part two. The investor slides (revenue,
+                                Harvey, the window, the launch ask) are
+                                omitted here; they live on in the original
+                                aiden-deck.
   generic/colleague/index.html  THE COLLEAGUE STORY - the no-agency-name
                                 Colleague deck generated from bmf/index.html.
                                 The toolkit section is removed here (the AIDEN
@@ -52,21 +59,48 @@ AIDEN_NAV_HTML = """
 </nav>
 """
 
-HUB_SLIDE_ANCHOR = "<!-- 16b: THE PROOF -->"
+# Original aiden-deck slide indices:
+#  0 title | 1 sameness | 2 prefrontal cortex | 3 lived career | 4 the moat
+#  5 same brief, different engine | 6 one brain nine products | 7 Colleague
+#  8-15 Chat..refrAIm | 16 four ways AIDEN earns | 17 in production today
+#  18 already paid for | 19 built from inside | 20 Harvey | 21 the window
+#  22 launch it | 23 help us launch (investor CTA)
+# Strings are injected slides; ints not listed are cut (investor material).
+NARRATIVE_ORDER = [0, 1, 2, 3, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 17,
+                   "HUB", "TURN", 4, "WHATIF", 7, "BRIDGE"]
 
-BRIDGE_ANCHOR = """tomh@redbaez.com
+END_ANCHOR = """tomh@redbaez.com
     </div>
   </div>"""
 
-BRIDGE_SLIDE = """
+TURN_SLIDE = """<div class="slide">
+    <h3>The turn</h3>
+    <h2>The tech is a brain.<br><span class="accent">And a brain is nurtured, not&nbsp;installed.</span></h2>
+    <p>Every tool you just saw runs on the same phantom brain: persistent memories, beliefs and instincts that argue back. It did not arrive knowing how to behave. It was raised: interviewed, corrected and sharpened, brief after&nbsp;brief.</p>
+    <div class="key-line">The model is rented. <span class="accent">The brain is grown.</span></div>
+  </div>
 
-  <!-- PART TWO BRIDGE -->
-  <div class="slide slide-cta">
+  """
+
+WHATIF_SLIDE = """<div class="slide">
+    <h3>The question</h3>
+    <h2>What if your company had its own<br><span class="accent">phantom&nbsp;brain?</span></h2>
+    <p>Phantom memories of your business. Your clients, your campaigns, your beliefs, the taste your best people carry in their&nbsp;heads.</p>
+    <p>Not a model fine-tuned once and left to age. A brain your team nurtures, that compounds with every brief and never hands in its&nbsp;notice.</p>
+    <div class="key-line">This is <span class="accent">Colleague.</span></div>
+  </div>
+
+  """
+
+BRIDGE_SLIDE = """<div class="slide slide-cta">
     <div class="title-accent" style="margin: 0 auto 24px;"></div>
     <h2>Part two. <span class="accent">The Colleague&nbsp;story.</span></h2>
-    <p class="cta-detail">One agency's own AIDEN, from a co-created brain to a finished film. The walk-through&nbsp;continues.</p>
+    <p class="cta-detail">One agency's own AIDEN, from a co-created brain to a finished film. See it&nbsp;built.</p>
     <a class="story-cta" href="colleague/" onclick="event.stopPropagation()">Open the Colleague story &rarr;</a>
-  </div>"""
+    <div class="cta-contact" style="margin-top: 40px;"><strong>Tom Hyde</strong><br>tomh@redbaez.com</div>
+  </div>
+
+  """
 
 
 def hub_slide() -> str:
@@ -84,15 +118,41 @@ def hub_slide() -> str:
 
 def build_aiden_story():
     html = AIDEN_SOURCE.read_text(encoding="utf-8")
-    for anchor in ("</head>", "<body>", HUB_SLIDE_ANCHOR, BRIDGE_ANCHOR):
-        assert html.count(anchor) == 1, f"anchor not unique in aiden-story.html: {anchor[:40]!r}"
+
+    # split the deck into slide blocks
+    starts = [m.start() for m in re.finditer(r'<div class="slide[^"]*"[^>]*>', html)]
+    assert len(starts) == 24, f"expected 24 slides in aiden-story.html, found {len(starts)}"
+    assert html.count(END_ANCHOR) == 1
+    end_last = html.index(END_ANCHOR) + len(END_ANCHOR)
+    blocks = [html[starts[i]:starts[i + 1]] for i in range(len(starts) - 1)]
+    blocks.append(html[starts[-1]:end_last])
+    # strip trailing slide-comments so reordered blocks don't mislabel neighbours
+    blocks = [re.sub(r"\s*<!--[^>]*-->\s*$", "\n\n  ", b) for b in blocks]
+
+    injected = {"HUB": hub_slide(), "TURN": TURN_SLIDE, "WHATIF": WHATIF_SLIDE,
+                "BRIDGE": BRIDGE_SLIDE}
+    body = "".join(injected[t] if isinstance(t, str) else blocks[t]
+                   for t in NARRATIVE_ORDER)
+    html = html[:starts[0]] + body + html[end_last:]
+
+    # Colleague is the reveal, not one of the roster run
+    assert html.count("<h3>Product 01 / 09</h3>") == 1
+    html = html.replace("<h3>Product 01 / 09</h3>", "<h3>The ninth product</h3>")
+    # renumber the remaining tool slides 01-08 (ascending, each unique when replaced)
+    for i in range(2, 10):
+        old, new = f"Product {i:02d} / 09", f"Product {i - 1:02d} / 09"
+        assert html.count(old) == 1, f"kicker not unique: {old}"
+        html = html.replace(old, new)
+
+    # story nav
+    assert html.count("</head>") == 1 and html.count("<body>") == 1
     html = html.replace("</head>", AIDEN_NAV_CSS + "</head>")
     html = html.replace("<body>", "<body>" + AIDEN_NAV_HTML)
-    html = html.replace(HUB_SLIDE_ANCHOR, hub_slide() + HUB_SLIDE_ANCHOR)
-    html = html.replace(BRIDGE_ANCHOR, BRIDGE_ANCHOR + BRIDGE_SLIDE)
+
     OUT_AIDEN.parent.mkdir(parents=True, exist_ok=True)
     OUT_AIDEN.write_text(html, encoding="utf-8")
-    print(f"wrote {OUT_AIDEN} ({OUT_AIDEN.stat().st_size / 1024:.0f} KB)")
+    print(f"wrote {OUT_AIDEN} ({OUT_AIDEN.stat().st_size / 1024:.0f} KB, "
+          f"{len(NARRATIVE_ORDER)} slides)")
 
 
 # ------------------------------------------------------------ Colleague story
