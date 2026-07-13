@@ -27,6 +27,7 @@ import base64, pathlib, re
 HERE = pathlib.Path(__file__).resolve().parent
 SOURCE = HERE / "bmf" / "index.html"
 HUB_IMG = HERE / "assets" / "aiden-hub-live.png"
+BRAIN_IMG = HERE / "assets" / "phantom-constellation.jpg"
 OUT = HERE / "generic" / "index.html"
 
 
@@ -41,32 +42,69 @@ SAMENESS = """<section><div class="wrap rv">
 
 """
 
-CORTEX = """<section><div class="wrap rv">
-  <p class="eyebrow">The engine</p>
-  <h2>We gave the model<br>a prefrontal&nbsp;cortex.</h2>
-  <p class="lead">Raw language models are limbic. Reactive, fluent, and desperate to please. The sycophancy is the tell: with nothing pushing back, the model drifts toward whatever you want to hear.</p>
-  <p>AIDEN adds the missing layer. The model brings fluency and pattern recognition. Phantom memory brings persistence, identity, and the ability to disagree. <span class="hl">Not autocomplete. Creative&nbsp;conviction.</span></p>
-</div></section>
+def cortex_section() -> str:
+    brain_b64 = base64.b64encode(BRAIN_IMG.read_bytes()).decode()
+    return (
+        '<section><div class="wrap rv">\n'
+        '  <p class="eyebrow">The engine</p>\n'
+        '  <h2>We gave the model<br>a prefrontal&nbsp;cortex.</h2>\n'
+        '  <p class="lead">Raw language models are limbic. Reactive, fluent, and desperate to please. '
+        'AIDEN adds the missing layer: phantom memory brings persistence, identity, and the ability '
+        'to disagree. <span class="hl">Not autocomplete. Creative&nbsp;conviction.</span></p>\n'
+        f'  <figure><img src="data:image/jpeg;base64,{brain_b64}" '
+        'alt="The AIDEN brain live in Chat: 396 phantoms, 27 firing on one message">\n'
+        '  <figcaption>The brain, live in AIDEN Chat &middot; 396 phantoms &middot; 27 fired on one message</figcaption></figure>\n'
+        '</div></section>\n\n'
+    )
 
-"""
 
+# The three phantom cards are real entries from the live brain
+# (aiden-chat/backend/phantoms_unified.json), reproduced verbatim.
 CAREER = """<section><div class="wrap rv">
   <p class="eyebrow">The phantom system</p>
   <h2>It believes it has lived<br>a decades-long&nbsp;career.</h2>
-  <p class="lead">AIDEN cultivates hundreds of phantom memories from an agency's own culture, documents, team interviews, and second brain. Each is a perspective with real expertise, an origin story, and a point of view.</p>
-  <p>On every message it scores all of them, and three to twelve fire, drawn from over 400 distinct memories the system believes it has lived through across an advertising career it never actually had. <span class="hl">When phantoms collide on a brief, it voices the disagreement instead of resolving it. The work has been argued over before it reaches&nbsp;you.</span></p>
+  <p class="lead">Each phantom is a perspective with real expertise, an origin story, and a point of view. Here are three of the live brain's 396, verbatim: Bernbach's Avis, Ogilvy's Rolls-Royce, and a brief it believes it wrote itself.</p>
+  <div class="phantoms">
+    <div class="ph">
+      <div class="ph-head"><span class="ph-name">FLIP_WEAKNESS_TO_STRENGTH</span><span class="ph-wt">weight 4.9 &middot; weakness&rarr;weapon</span></div>
+      <h5>The feeling that fires it</h5>
+      <p class="seed">"your weakness is your unfair advantage"</p>
+      <h5>Born from</h5>
+      <p class="story">Darwin was a mediocre student who couldn't stick to medicine or theology. That failure to specialise meant he saw connections others missed. Avis was number two - they owned it: 'We Try Harder.' Every apparent liability contains an advantage your competitors can't claim because they don't have the flaw. Stop hiding the weakness. Weaponise it.</p>
+    </div>
+    <div class="ph">
+      <div class="ph-head"><span class="ph-name">MINE_RESEARCH_FOR_REVELATION</span><span class="ph-wt">weight 4.85 &middot; research&rarr;revelation</span></div>
+      <h5>The feeling that fires it</h5>
+      <p class="seed">"somewhere in the research is a diamond"</p>
+      <h5>Born from</h5>
+      <p class="story">Ogilvy spent three weeks reading about Rolls-Royce before writing a word. Found one quote from a technical editor about the electric clock. That became the insight that doubled sales. The principle is universal: immerse yourself in the material until one detail makes everything click. The breakthrough hides in the footnotes, not the executive summary.</p>
+    </div>
+    <div class="ph">
+      <div class="ph-head"><span class="ph-name">INJECT_STRATEGIC_HUMOR_INTO_COPY</span><span class="ph-wt">weight 3.98 &middot; copy&rarr;comedy</span></div>
+      <h5>The feeling that fires it</h5>
+      <p class="seed">"humor makes messages stick and spread"</p>
+      <h5>Born from</h5>
+      <p class="story">Brief was for insurance. Deadly boring category. Wrote: 'Life insurance: Because your last words shouldn't be about money.' Client's jaw dropped. Sometimes you crack the code by cracking a smile.</p>
+    </div>
+  </div>
+  <p style="margin-top:1.8rem">A career it never actually had. <span class="hl">When phantoms collide on a brief, it voices the disagreement instead of resolving it. The work has been argued over before it reaches&nbsp;you.</span></p>
 </div></section>
 
 """
 
+# The blockquote is the brain's actual reply to this brief, captured live on
+# 2026-07-13 and archived at assets/brain-pushback-response.json. 73 phantoms
+# fired, 3 collisions.
 ENGINE = """<section><div class="wrap rv">
   <p class="eyebrow">The difference</p>
   <h2>Same brief.<br>Different&nbsp;engine.</h2>
   <div class="portfolio-stack">
-    <div class="portfolio-row"><span class="k">Raw LLM</span><div><h3>Polished, safe, predictable.</h3><p>Sounds like everyone else.</p></div></div>
+    <div class="portfolio-row"><span class="k">Raw LLM</span><div><h3>Polished, safe, predictable.</h3><p>Sounds like everyone else, and says yes to everything.</p></div></div>
     <div class="portfolio-row"><span class="k">AIDEN</span><div><h3>Opinionated, challenged, pressure-tested.</h3><p>Sounds like it has thirty years in the industry.</p></div></div>
   </div>
-  <p style="margin-top:1.8rem">The difference is not better prose. <span class="hl">It is conviction, and the willingness to&nbsp;disagree.</span></p>
+  <p style="margin-top:2.2rem">Don't take our word for it. We sent the live brain a deliberately weak brief: "a TikTok campaign to make health insurance feel relevant to Gen Z, warm and trustworthy, viral." Its reply, word for word:</p>
+  <blockquote class="quote wide"><p>"Before I build anything out, I need to push back on the brief. &hellip; That's not a warm and fuzzy audience. That's an angry, confused, financially stressed audience who already feels burned by the system. &hellip; That's your villain. Not your competitor. The <em>category itself</em> is the villain. Are you brave enough to say that?"</p></blockquote>
+  <p><span class="hl">73 phantoms fired. Three collided.</span> The full reply ran to a data-backed read of the audience, three challenges to the brief, and the questions it should have answered&nbsp;first.</p>
 </div></section>
 
 """
@@ -105,8 +143,9 @@ def hub_section() -> str:
         '<section><div class="wrap rv">\n'
         '  <p class="eyebrow">Live today</p>\n'
         '  <h2>Not a concept.<br>A live&nbsp;platform.</h2>\n'
-        '  <p class="lead">AIDEN runs today at www.aiden.services. One login, one token wallet, '
-        'and a session that follows you across every&nbsp;service.</p>\n'
+        '  <p class="lead">One brain, nine products, one login. AIDEN runs today at '
+        'www.aiden.services, and the session follows you across every service. Eight tools are '
+        'open now. <span class="hl">The ninth is why you\'re&nbsp;here.</span></p>\n'
         f'  <figure><img src="data:image/png;base64,{hub_b64}" '
         'alt="The AIDEN hub at www.aiden.services, captured live">\n'
         '  <figcaption>www.aiden.services &middot; the hub &middot; captured live</figcaption></figure>\n'
@@ -124,49 +163,6 @@ REPLACEMENTS = [
      "AIDEN builds phantom brains: creative intelligence with memory, taste and conviction. This is the whole story, from the tech to the tools to a colleague raised on your business, all the way to a finished&nbsp;film."),
     ("<div class=\"tag\">Holding company story &middot; BMF proof &middot; Discussion + demo</div>",
      "<div class=\"tag\">One story &middot; Working proof &middot; Sound on at the end</div>"),
-
-    # --- the roster: one brain, nine products ---
-    ("<span class=\"n\">00</span> The toolkit", "<span class=\"n\">00</span> The products"),
-    ("<h2>Your tools.<br>One shared session.</h2>", "<h2>One brain.<br>Nine&nbsp;products.</h2>"),
-    ("<p class=\"lead\">Colleague is the agency operating system powered by AIDEN tech. Select the intelligent tool that matches the task. Each session's outputs are shared across services, so context, memory and agency judgment move with you. It is like a team of experts, all with 30 years' experience, working for your business.</p>",
-     "<p class=\"lead\">Everything AIDEN makes runs on that one phantom brain and shares one session, so context, memory and judgment move with you across every tool. Eight of the nine are open at aiden.services&nbsp;today.</p>"),
-    ('<div class="tool-name">Brand Audit <span class="soon">Soon</span></div>',
-     '<div class="tool-name">Brand Audit</div>'),
-    # Pitch slots in before Ads (default cold mark, no CSS needed)
-    ("""    <div class="tool-card ads">
-      <span class="tool-mark"></span>
-      <div>
-        <div class="tool-name">Ads</div>""",
-     """    <div class="tool-card pitch">
-      <span class="tool-mark"></span>
-      <div>
-        <div class="tool-name">Pitch</div>
-        <p>Brief to pitch, one workflow. Strategy, territories, the big idea and copy, assembled into a boardroom-ready deck.</p>
-      </div>
-    </div>
-    <div class="tool-card ads">
-      <span class="tool-mark"></span>
-      <div>
-        <div class="tool-name">Ads</div>"""),
-    # refrAIm closes the grid, then the teaser into the reveal
-    ("""        <p>Comprehensive brand analysis for visual identity, messaging consistency and competitive positioning, with clear next moves for where the brand needs to go.</p>
-      </div>
-    </div>
-  </div>""",
-     """        <p>Comprehensive brand analysis for visual identity, messaging consistency and competitive positioning, with clear next moves for where the brand needs to go.</p>
-      </div>
-    </div>
-    <div class="tool-card refraim">
-      <span class="tool-mark"></span>
-      <div>
-        <div class="tool-name">refrAIm</div>
-        <p>One video, every format. Reframe, resize and adapt finished film for any platform or aspect ratio with AI-driven composition.</p>
-      </div>
-    </div>
-  </div>
-  <p style="margin-top:1.6rem"><span class="hl">That's eight. The ninth is why you're&nbsp;here.</span></p>"""),
-    (".tool-card.chat .tool-mark, .tool-card.ads .tool-mark {",
-     ".tool-card.chat .tool-mark, .tool-card.ads .tool-mark, .tool-card.refraim .tool-mark {"),
 
     # --- the moat (kept section, no-agency copy + the punch line) ---
     ("For a holding company, the advantage is not just speed. It is durable, portfolio-specific intelligence that compounds inside each agency.",
@@ -235,13 +231,15 @@ def build():
     blocks.append(html[starts[-1]:])  # last block carries the closing markup + scripts
 
     injected = {
-        "SAMENESS": SAMENESS, "CORTEX": CORTEX, "CAREER": CAREER, "ENGINE": ENGINE,
-        "HUB": hub_section(), "TURN": TURN, "WHATIF": WHATIF, "REVEAL": REVEAL,
+        "SAMENESS": SAMENESS, "CORTEX": cortex_section(), "CAREER": CAREER,
+        "ENGINE": ENGINE, "HUB": hub_section(), "TURN": TURN,
+        "WHATIF": WHATIF, "REVEAL": REVEAL,
     }
-    # BMF master sections: 0 cover, 1 toolkit, 2-6 old Act Zero (cut), 7 moat,
-    # 8 proof of depth, 9 divider, 10-20 walk-through, 21 divider, 22-28 route
-    # + film, 29 ask (carries scripts).
-    order = [0, "SAMENESS", "CORTEX", "CAREER", "ENGINE", 1, "HUB",
+    # BMF master sections: 0 cover, 1 toolkit (cut, the hub screenshot shows
+    # the products), 2-6 old Act Zero (cut), 7 moat, 8 proof of depth,
+    # 9 divider, 10-20 walk-through, 21 divider, 22-28 route + film,
+    # 29 ask (carries scripts).
+    order = [0, "SAMENESS", "CORTEX", "CAREER", "ENGINE", "HUB",
              "TURN", 7, "WHATIF", "REVEAL", 8,
              9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
              21, 22, 23, 24, 25, 26, 27, 28, 29]
