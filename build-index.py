@@ -14,7 +14,7 @@ mono  = b64(FONTS / "SpaceMono-Bold.ttf", "font/ttf")
 
 # slug, name, tagline, status ('live'|'soon'), accent
 AGENCIES = [
-    ("generic", "Generic", "No agency named. The AIDEN story first, then the Colleague walk-through to a finished film.", "live"),
+    ("generic", "Generic", "No agency named. One story: AIDEN, the phantom brain, then Colleague, ending on a finished film.", "live"),
     ("bmf", "BMF", "Home of the Long Idea. A one-line ALDI brief to a finished film.", "live"),
     ("town-square", "Town Square", "Cultured Creativity, now with memory. Built from Town Square's own brain, a one-line ALDI brief to a finished film.", "live"),
     ("kerfuffle", "Kerfuffle", "Built to command attention. From Kerfuffle's own brain, a one-line ALDI brief to a finished film.", "live"),
