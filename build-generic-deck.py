@@ -1,43 +1,120 @@
 #!/usr/bin/env python3
-"""Generate the GENERIC (no agency name) Colleague deck from the current BMF
-build (bmf/index.html). No agency is named anywhere in the copy: the pitch
-sections speak to "your agency" and the demo sections narrate "the agency"
-whose real brain the build was created from. The ALDI creative route, the demo
-screenshots, and the closing ALDI film stay fixed by design.
+"""Build the GENERIC (no agency name) two-part experience:
 
-This deck also opens on the AIDEN platform: a live hub screenshot
-(assets/aiden-hub-live.png, inlined at build time) plus a refreshed services
-roster, before the Colleague story starts.
+  generic/index.html            THE AIDEN STORY - the full aiden-deck slide
+                                machine (vendored as aiden-story.html), plus a
+                                story-nav, a live hub-screenshot slide after
+                                "in production today", and a closing bridge
+                                slide into part two.
+  generic/colleague/index.html  THE COLLEAGUE STORY - the no-agency-name
+                                Colleague deck generated from bmf/index.html.
+                                The toolkit section is removed here (the AIDEN
+                                story owns the services roster), and the same
+                                story-nav is injected.
+
+aiden-story.html is a vendored copy of ~/aiden-deck/index.html. When that deck
+changes, re-copy it here and re-run this script.
 """
 import base64, pathlib, re
 
 HERE = pathlib.Path(__file__).resolve().parent
-SOURCE = HERE / "bmf" / "index.html"
-OUT_DIR = HERE / "generic"
+AIDEN_SOURCE = HERE / "aiden-story.html"
+BMF_SOURCE = HERE / "bmf" / "index.html"
 HUB_IMG = HERE / "assets" / "aiden-hub-live.png"
+OUT_AIDEN = HERE / "generic" / "index.html"
+OUT_COLLEAGUE = HERE / "generic" / "colleague" / "index.html"
 
 
-def platform_section() -> str:
+# ---------------------------------------------------------------- AIDEN story
+
+AIDEN_NAV_CSS = """<style>
+.story-nav { position: fixed; top: 22px; right: 40px; z-index: 200; font-size: 12px;
+  letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+.story-nav a { color: var(--text-dim); text-decoration: none; padding: 6px 0; }
+.story-nav a:hover { color: var(--text); }
+.story-nav a.on { color: var(--accent); }
+.story-nav .sep { color: var(--text-dim); margin: 0 10px; }
+.hub-shot { display: block; max-width: min(1040px, 82vw); max-height: 56vh;
+  margin-top: 36px; border: 1px solid #222; border-radius: 6px;
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,.8); }
+.hub-caption { margin-top: 14px; font-size: 12px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--text-dim); }
+.story-cta { display: inline-block; margin-top: 28px; padding: 14px 28px;
+  border: 2px solid var(--accent); color: var(--accent); text-decoration: none;
+  font-weight: 700; font-size: 16px; letter-spacing: .04em; }
+.story-cta:hover { background: var(--accent); color: #fff; }
+</style>
+"""
+
+AIDEN_NAV_HTML = """
+<nav class="story-nav" onclick="event.stopPropagation()">
+  <a class="on" href="./">The AIDEN story</a><span class="sep">/</span><a href="colleague/">The Colleague story</a>
+</nav>
+"""
+
+HUB_SLIDE_ANCHOR = "<!-- 16b: THE PROOF -->"
+
+BRIDGE_ANCHOR = """tomh@redbaez.com
+    </div>
+  </div>"""
+
+BRIDGE_SLIDE = """
+
+  <!-- PART TWO BRIDGE -->
+  <div class="slide slide-cta">
+    <div class="title-accent" style="margin: 0 auto 24px;"></div>
+    <h2>Part two. <span class="accent">The Colleague&nbsp;story.</span></h2>
+    <p class="cta-detail">One agency's own AIDEN, from a co-created brain to a finished film. The walk-through&nbsp;continues.</p>
+    <a class="story-cta" href="colleague/" onclick="event.stopPropagation()">Open the Colleague story &rarr;</a>
+  </div>"""
+
+
+def hub_slide() -> str:
     hub_b64 = base64.b64encode(HUB_IMG.read_bytes()).decode()
     return (
-        '<section id="platform"><div class="wrap rv">\n'
-        '  <p class="eyebrow">The platform</p>\n'
-        '  <h2>Not a concept.<br>A live&nbsp;platform.</h2>\n'
-        '  <p class="lead">AIDEN runs today at www.aiden.services. One login, one token wallet, '
-        'and a session that follows you across every service. Everything in this deck '
-        'sits on&nbsp;it.</p>\n'
-        f'  <figure><img src="data:image/png;base64,{hub_b64}" '
-        'alt="The AIDEN hub at www.aiden.services, the live services behind Colleague">\n'
-        '  <figcaption>www.aiden.services &middot; the hub &middot; captured live</figcaption></figure>\n'
-        '</div></section>\n\n'
+        '<div class="slide">\n'
+        '    <div class="accent-line"></div>\n'
+        '    <h2>One login. <span class="accent">All of it live at aiden.services.</span></h2>\n'
+        f'    <img class="hub-shot" src="data:image/png;base64,{hub_b64}" '
+        'alt="The AIDEN hub at www.aiden.services, captured live">\n'
+        '    <div class="hub-caption">www.aiden.services &middot; the hub &middot; captured live</div>\n'
+        '  </div>\n\n  '
     )
 
 
-REPLACEMENTS = [
-    # --- title (unchanged wording, kept explicit for clarity) ---
-    ("<title>AIDEN Colleague, The Hunt Is Over</title>",
-     "<title>AIDEN Colleague, The Hunt Is Over</title>"),
+def build_aiden_story():
+    html = AIDEN_SOURCE.read_text(encoding="utf-8")
+    for anchor in ("</head>", "<body>", HUB_SLIDE_ANCHOR, BRIDGE_ANCHOR):
+        assert html.count(anchor) == 1, f"anchor not unique in aiden-story.html: {anchor[:40]!r}"
+    html = html.replace("</head>", AIDEN_NAV_CSS + "</head>")
+    html = html.replace("<body>", "<body>" + AIDEN_NAV_HTML)
+    html = html.replace(HUB_SLIDE_ANCHOR, hub_slide() + HUB_SLIDE_ANCHOR)
+    html = html.replace(BRIDGE_ANCHOR, BRIDGE_ANCHOR + BRIDGE_SLIDE)
+    OUT_AIDEN.parent.mkdir(parents=True, exist_ok=True)
+    OUT_AIDEN.write_text(html, encoding="utf-8")
+    print(f"wrote {OUT_AIDEN} ({OUT_AIDEN.stat().st_size / 1024:.0f} KB)")
 
+
+# ------------------------------------------------------------ Colleague story
+
+COLLEAGUE_NAV_CSS = """<style>
+.story-nav { position: fixed; top: 22px; right: clamp(1.4rem,5vw,3rem); z-index: 400;
+  font-family: 'Mono'; font-weight: 700; font-size: .62rem; letter-spacing: .14em;
+  text-transform: uppercase; }
+.story-nav a { color: var(--muted); text-decoration: none; }
+.story-nav a:hover { color: var(--paper); }
+.story-nav a.on { color: var(--red); }
+.story-nav .sep { color: var(--muted); margin: 0 .6rem; }
+</style>
+"""
+
+COLLEAGUE_NAV_HTML = """
+<nav class="story-nav">
+  <a href="../">The AIDEN story</a><span class="sep">/</span><a class="on" href="./">The Colleague story</a>
+</nav>
+"""
+
+REPLACEMENTS = [
     # --- cover: drop the holding-company frame ---
     ("<h1>An operating<br>system for<br>the agency group</h1>",
      "<h1>An operating<br>system for<br>your agency</h1>"),
@@ -125,55 +202,17 @@ REPLACEMENTS = [
      "Use this build as the proof for discussion and demo, then extend AIDEN across your agency as the productivity platform for research, strategy, briefs, testing, client work, and execution."),
     ("&middot; Colleague &nbsp;&middot;&nbsp; BMF proof instance &nbsp;&middot;&nbsp; Group operating system",
      "&middot; Colleague &nbsp;&middot;&nbsp; Working proof instance &nbsp;&middot;&nbsp; Agency operating system"),
-
-    # --- toolkit refresh: full live roster (Brand Audit live, add Pitch + refrAIm) ---
-    ('<div class="tool-name">Brand Audit <span class="soon">Soon</span></div>',
-     '<div class="tool-name">Brand Audit</div>'),
-    # Pitch slots in after Brief Sharpener (default cold mark, no CSS needed)
-    ("""    <div class="tool-card ads">
-      <span class="tool-mark"></span>
-      <div>
-        <div class="tool-name">Ads</div>""",
-     """    <div class="tool-card pitch">
-      <span class="tool-mark"></span>
-      <div>
-        <div class="tool-name">Pitch</div>
-        <p>Brief to pitch, one workflow. Strategy, territories, the big idea and copy, assembled into a boardroom-ready deck.</p>
-      </div>
-    </div>
-    <div class="tool-card ads">
-      <span class="tool-mark"></span>
-      <div>
-        <div class="tool-name">Ads</div>"""),
-    # refrAIm closes the grid after Brand Audit
-    ("""        <p>Comprehensive brand analysis for visual identity, messaging consistency and competitive positioning, with clear next moves for where the brand needs to go.</p>
-      </div>
-    </div>
-  </div>""",
-     """        <p>Comprehensive brand analysis for visual identity, messaging consistency and competitive positioning, with clear next moves for where the brand needs to go.</p>
-      </div>
-    </div>
-    <div class="tool-card refraim">
-      <span class="tool-mark"></span>
-      <div>
-        <div class="tool-name">refrAIm</div>
-        <p>One video, every format. Reframe, resize and adapt finished film for any platform or aspect ratio with AI-driven composition.</p>
-      </div>
-    </div>
-  </div>"""),
-    # give refrAIm the red mark alongside chat and ads
-    (".tool-card.chat .tool-mark, .tool-card.ads .tool-mark {",
-     ".tool-card.chat .tool-mark, .tool-card.ads .tool-mark, .tool-card.refraim .tool-mark {"),
 ]
 
 
-def build():
-    html = SOURCE.read_text(encoding="utf-8")
+def build_colleague_story():
+    html = BMF_SOURCE.read_text(encoding="utf-8")
 
-    # the platform section opens the deck, right after the cover
-    toolkit_anchor = '<section id="tools" class="toolkit">'
-    assert toolkit_anchor in html, "toolkit section anchor not found in BMF master"
-    html = html.replace(toolkit_anchor, platform_section() + toolkit_anchor)
+    # the AIDEN story owns the services roster; drop the toolkit section here
+    html, removed = re.subn(
+        r'<section id="tools" class="toolkit">.*?</section>\s*', "", html, count=1, flags=re.S
+    )
+    assert removed == 1, "toolkit section not found in BMF master"
 
     missing = []
     for old, new in REPLACEMENTS:
@@ -181,9 +220,14 @@ def build():
             missing.append(old)
         html = html.replace(old, new)
     if missing:
-        print(f"  WARNING [generic]: {len(missing)} pattern(s) not found:")
+        print(f"  WARNING [colleague]: {len(missing)} pattern(s) not found:")
         for m in missing:
             print("   -", m[:80])
+
+    # story nav
+    assert html.count("</head>") == 1 and html.count("<body>") == 1
+    html = html.replace("</head>", COLLEAGUE_NAV_CSS + "</head>")
+    html = html.replace("<body>", "<body>" + COLLEAGUE_NAV_HTML)
 
     # sanity: no readable BMF should remain (base64 residue is fine)
     readable = [html[max(0, m.start() - 30):m.end() + 30]
@@ -191,15 +235,15 @@ def build():
                 if " " in html[max(0, m.start() - 30):m.end() + 30]
                 or "<" in html[max(0, m.start() - 30):m.end() + 30]]
     if readable:
-        print(f"  NOTE [generic]: {len(readable)} readable 'BMF' left:")
+        print(f"  NOTE [colleague]: {len(readable)} readable 'BMF' left:")
         for r in readable[:8]:
             print("   -", r.strip())
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
-    out_path = OUT_DIR / "index.html"
-    out_path.write_text(html, encoding="utf-8")
-    print(f"wrote {out_path} ({out_path.stat().st_size / 1024 / 1024:.2f} MB)")
+    OUT_COLLEAGUE.parent.mkdir(parents=True, exist_ok=True)
+    OUT_COLLEAGUE.write_text(html, encoding="utf-8")
+    print(f"wrote {OUT_COLLEAGUE} ({OUT_COLLEAGUE.stat().st_size / 1024 / 1024:.2f} MB)")
 
 
 if __name__ == "__main__":
-    build()
+    build_aiden_story()
+    build_colleague_story()
