@@ -4,12 +4,33 @@ build (bmf/index.html). No agency is named anywhere in the copy: the pitch
 sections speak to "your agency" and the demo sections narrate "the agency"
 whose real brain the build was created from. The ALDI creative route, the demo
 screenshots, and the closing ALDI film stay fixed by design.
+
+This deck also opens on the AIDEN platform: a live hub screenshot
+(assets/aiden-hub-live.png, inlined at build time) plus a refreshed services
+roster, before the Colleague story starts.
 """
-import pathlib, re
+import base64, pathlib, re
 
 HERE = pathlib.Path(__file__).resolve().parent
 SOURCE = HERE / "bmf" / "index.html"
 OUT_DIR = HERE / "generic"
+HUB_IMG = HERE / "assets" / "aiden-hub-live.png"
+
+
+def platform_section() -> str:
+    hub_b64 = base64.b64encode(HUB_IMG.read_bytes()).decode()
+    return (
+        '<section id="platform"><div class="wrap rv">\n'
+        '  <p class="eyebrow">The platform</p>\n'
+        '  <h2>Not a concept.<br>A live&nbsp;platform.</h2>\n'
+        '  <p class="lead">AIDEN runs today at www.aiden.services. One login, one token wallet, '
+        'and a session that follows you across every service. Everything in this deck '
+        'sits on&nbsp;it.</p>\n'
+        f'  <figure><img src="data:image/png;base64,{hub_b64}" '
+        'alt="The AIDEN hub at www.aiden.services, the live services behind Colleague">\n'
+        '  <figcaption>www.aiden.services &middot; the hub &middot; captured live</figcaption></figure>\n'
+        '</div></section>\n\n'
+    )
 
 
 REPLACEMENTS = [
@@ -104,11 +125,55 @@ REPLACEMENTS = [
      "Use this build as the proof for discussion and demo, then extend AIDEN across your agency as the productivity platform for research, strategy, briefs, testing, client work, and execution."),
     ("&middot; Colleague &nbsp;&middot;&nbsp; BMF proof instance &nbsp;&middot;&nbsp; Group operating system",
      "&middot; Colleague &nbsp;&middot;&nbsp; Working proof instance &nbsp;&middot;&nbsp; Agency operating system"),
+
+    # --- toolkit refresh: full live roster (Brand Audit live, add Pitch + refrAIm) ---
+    ('<div class="tool-name">Brand Audit <span class="soon">Soon</span></div>',
+     '<div class="tool-name">Brand Audit</div>'),
+    # Pitch slots in after Brief Sharpener (default cold mark, no CSS needed)
+    ("""    <div class="tool-card ads">
+      <span class="tool-mark"></span>
+      <div>
+        <div class="tool-name">Ads</div>""",
+     """    <div class="tool-card pitch">
+      <span class="tool-mark"></span>
+      <div>
+        <div class="tool-name">Pitch</div>
+        <p>Brief to pitch, one workflow. Strategy, territories, the big idea and copy, assembled into a boardroom-ready deck.</p>
+      </div>
+    </div>
+    <div class="tool-card ads">
+      <span class="tool-mark"></span>
+      <div>
+        <div class="tool-name">Ads</div>"""),
+    # refrAIm closes the grid after Brand Audit
+    ("""        <p>Comprehensive brand analysis for visual identity, messaging consistency and competitive positioning, with clear next moves for where the brand needs to go.</p>
+      </div>
+    </div>
+  </div>""",
+     """        <p>Comprehensive brand analysis for visual identity, messaging consistency and competitive positioning, with clear next moves for where the brand needs to go.</p>
+      </div>
+    </div>
+    <div class="tool-card refraim">
+      <span class="tool-mark"></span>
+      <div>
+        <div class="tool-name">refrAIm</div>
+        <p>One video, every format. Reframe, resize and adapt finished film for any platform or aspect ratio with AI-driven composition.</p>
+      </div>
+    </div>
+  </div>"""),
+    # give refrAIm the red mark alongside chat and ads
+    (".tool-card.chat .tool-mark, .tool-card.ads .tool-mark {",
+     ".tool-card.chat .tool-mark, .tool-card.ads .tool-mark, .tool-card.refraim .tool-mark {"),
 ]
 
 
 def build():
     html = SOURCE.read_text(encoding="utf-8")
+
+    # the platform section opens the deck, right after the cover
+    toolkit_anchor = '<section id="tools" class="toolkit">'
+    assert toolkit_anchor in html, "toolkit section anchor not found in BMF master"
+    html = html.replace(toolkit_anchor, platform_section() + toolkit_anchor)
 
     missing = []
     for old, new in REPLACEMENTS:

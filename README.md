@@ -10,7 +10,7 @@ Each deck is a single self-contained HTML file (fonts, screenshots, and video in
 
 ## Live
 - **BMF** — `/bmf/` — an AI operating system for the agency, ending on a finished ALDI film. Source build (real BMF tenant screenshots, real data). This is the source of truth for every other deck.
-- **Generic** — `/generic/` — no agency named anywhere in the copy. Pitch sections speak to "your agency", demo sections narrate "the agency" the build was created from. Same ALDI route and closing film. Safe default when no agency-specific deck exists yet.
+- **Generic** — `/generic/` — no agency named anywhere in the copy. Pitch sections speak to "your agency", demo sections narrate "the agency" the build was created from. Opens on the AIDEN platform: a live hub screenshot (`assets/aiden-hub-live.png`, inlined at build time) plus the full services roster (Pitch and refrAIm added, Brand Audit live), then the Colleague story. Same ALDI route and closing film. Safe default when no agency-specific deck exists yet.
 - **Town Square** — `/town-square/` — independent framing.
 - **Kerfuffle** — `/kerfuffle/` — independent framing.
 - **Uncommon** — `/uncommon/`
