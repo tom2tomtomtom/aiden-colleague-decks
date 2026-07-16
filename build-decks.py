@@ -29,6 +29,16 @@ HERE = pathlib.Path(__file__).resolve().parent
 SOURCE = HERE / "bmf" / "index.html"
 HUB_IMG = HERE / "assets" / "aiden-hub-live.png"
 BRAIN_IMG = HERE / "assets" / "phantom-constellation.jpg"
+KERFUFFLE_TREATMENT_IMG = HERE / "assets" / "kerfuffle-great-northern-treatments.png"
+KERFUFFLE_SCREENSHOTS = {
+    "Kerfuffle co-creation onboarding, 100% ready, 80 phantoms": HERE / "assets" / "kerfuffle-onboarding.png",
+    "The onboarding interview in the app": HERE / "assets" / "kerfuffle-interview.png",
+    "The Kerfuffle brain, 80 curated phantoms": HERE / "assets" / "kerfuffle-brain.png",
+    "Culture Scan running on ALDI in the app": HERE / "assets" / "kerfuffle-culture-scan.png",
+    "Synthetic Panel running the ALDI idea in the app": HERE / "assets" / "kerfuffle-synthetic-panel.png",
+    "Brief Sharpener scoring an HCF brief in the app": HERE / "assets" / "kerfuffle-brief-sharpener.png",
+    "Tools hub, the agency's brain pointed at a specific job": HERE / "assets" / "kerfuffle-tools.png",
+}
 
 VOWEL_SOUND = re.compile(r"^(Uncommon|Alt|Alien|A|E|I|O|U)", re.IGNORECASE)
 
@@ -302,6 +312,25 @@ def build_deck(slug: str, name: str | None):
         if old not in html:
             missing.append(old)
         html = html.replace(old, new)
+
+    if slug == "kerfuffle":
+        treatment_b64 = base64.b64encode(KERFUFFLE_TREATMENT_IMG.read_bytes()).decode()
+        html, replacements_made = re.subn(
+            r'(<img src=")data:image/[^\"]+(" alt="ALDI treatment contact sheet, six director options")',
+            lambda match: f'{match.group(1)}data:image/png;base64,{treatment_b64}{match.group(2)}',
+            html,
+            count=1,
+        )
+        assert replacements_made == 1, "Kerfuffle treatment image not found"
+        for alt, image_path in KERFUFFLE_SCREENSHOTS.items():
+            image_b64 = base64.b64encode(image_path.read_bytes()).decode()
+            html, replacements_made = re.subn(
+                rf'(<img src=")data:image/[^"]+(" alt="{re.escape(alt)}")',
+                lambda match: f'{match.group(1)}data:image/png;base64,{image_b64}{match.group(2)}',
+                html,
+                count=1,
+            )
+            assert replacements_made == 1, f"Kerfuffle screenshot not found: {alt}"
     if missing:
         print(f"  WARNING [{slug}]: {len(missing)} pattern(s) not found:")
         for m in missing:
