@@ -30,6 +30,21 @@ SOURCE = HERE / "bmf" / "index.html"
 HUB_IMG = HERE / "assets" / "aiden-hub-live.png"
 BRAIN_IMG = HERE / "assets" / "phantom-constellation.jpg"
 KERFUFFLE_TREATMENT_IMG = HERE / "assets" / "kerfuffle-great-northern-treatments.png"
+
+# Real captures from the town-square demo tenant (2026-07-20); alt strings
+# below are the post-rework versions (see town_square_rework.py).
+TOWN_SQUARE_SCREENSHOTS = {
+    "Town Square co-creation onboarding, 100% ready, 59 phantoms": HERE / "assets" / "town-square-onboarding.png",
+    "The onboarding interview in the app": HERE / "assets" / "town-square-interview.png",
+    "The Town Square brain, 59 curated phantoms": HERE / "assets" / "town-square-brain.png",
+    "Culture Scan running on ALDI in the app": HERE / "assets" / "town-square-culture-scan.png",
+    "Synthetic Panel running the ALDI idea in the app": HERE / "assets" / "town-square-synthetic-panel.png",
+    "Brief Sharpener scoring a weak health-fund brief in the app": HERE / "assets" / "town-square-brief-sharpener.png",
+    "Tools hub, the agency's brain pointed at a specific job": HERE / "assets" / "town-square-tools.png",
+    # the real pipeline run that made the film, cropped to remove the demo
+    # tenant's sidebar/header chrome
+    "The ALDI film on the Colleague pipeline canvas": HERE / "assets" / "town-square-pipeline-canvas.png",
+}
 KERFUFFLE_SCREENSHOTS = {
     "Kerfuffle co-creation onboarding, 100% ready, 80 phantoms": HERE / "assets" / "kerfuffle-onboarding.png",
     "The onboarding interview in the app": HERE / "assets" / "kerfuffle-interview.png",
@@ -331,6 +346,18 @@ def build_deck(slug: str, name: str | None):
                 count=1,
             )
             assert replacements_made == 1, f"Kerfuffle screenshot not found: {alt}"
+    if slug == "town-square":
+        import town_square_rework
+        html = town_square_rework.rework(html)
+        for alt, image_path in TOWN_SQUARE_SCREENSHOTS.items():
+            image_b64 = base64.b64encode(image_path.read_bytes()).decode()
+            html, replacements_made = re.subn(
+                rf'(<img src=")data:image/[^"]+(" alt="{re.escape(alt)}")',
+                lambda match: f'{match.group(1)}data:image/png;base64,{image_b64}{match.group(2)}',
+                html,
+                count=1,
+            )
+            assert replacements_made == 1, f"Town Square screenshot not found: {alt}"
     if missing:
         print(f"  WARNING [{slug}]: {len(missing)} pattern(s) not found:")
         for m in missing:
