@@ -100,33 +100,33 @@ def cortex_section() -> str:
     )
 
 
-# The three phantom cards are real entries from the live brain
-# (aiden-chat/backend/phantoms_unified.json), reproduced verbatim.
+# The three phantom cards are real entries in the Colleague base phantom
+# library (colleague.base_phantoms, added 2026-07-21), reproduced verbatim.
 CAREER = """<section><div class="wrap rv">
   <p class="eyebrow">The phantom system</p>
   <h2>It believes it has lived<br>a decades-long&nbsp;career.</h2>
-  <p class="lead">Each phantom is a perspective with real expertise, an origin story, and a point of view. Here are three of the live brain's 396, verbatim: Bernbach's Avis, Ogilvy's Rolls-Royce, and a brief it believes it wrote itself.</p>
+  <p class="lead">Each phantom is a perspective with real expertise, an origin story, and a point of view. Here are three of the live brain's phantoms, verbatim: a corridor conversation with Ogilvy, the room where Bernbach said "say that", and Mary Wells painting the&nbsp;planes.</p>
   <div class="phantoms">
     <div class="ph">
-      <div class="ph-head"><span class="ph-name">FLIP_WEAKNESS_TO_STRENGTH</span><span class="ph-wt">weight 4.9 &middot; weakness&rarr;weapon</span></div>
+      <div class="ph-head"><span class="ph-name">DEMAND_THE_HOMEWORK</span><span class="ph-wt">weight 4.9 &middot; ogilvy&rarr;homework</span></div>
       <h5>The feeling that fires it</h5>
-      <p class="seed">"your weakness is your unfair advantage"</p>
+      <p class="seed">"the itch to write before the reading is done, and the voice that stops you"</p>
       <h5>Born from</h5>
-      <p class="story">Darwin was a mediocre student who couldn't stick to medicine or theology. That failure to specialise meant he saw connections others missed. Avis was number two - they owned it: 'We Try Harder.' Every apparent liability contains an advantage your competitors can't claim because they don't have the flaw. Stop hiding the weakness. Weaponise it.</p>
+      <p class="story">New York, 1962. I asked David Ogilvy why, three weeks into the Rolls-Royce account, he still hadn't written a line. He didn't look up from the engineering reports. "The consumer isn't a moron. She can smell a writer who hasn't done his homework." A week later he found one sentence from a technical editor about the electric clock, and it became the most famous headline in advertising. I have never started writing before finishing the reading since.</p>
     </div>
     <div class="ph">
-      <div class="ph-head"><span class="ph-name">MINE_RESEARCH_FOR_REVELATION</span><span class="ph-wt">weight 4.85 &middot; research&rarr;revelation</span></div>
+      <div class="ph-head"><span class="ph-name">LEAD_WITH_THE_HONEST_THING</span><span class="ph-wt">weight 4.85 &middot; bernbach&rarr;honesty</span></div>
       <h5>The feeling that fires it</h5>
-      <p class="seed">"somewhere in the research is a diamond"</p>
+      <p class="seed">"the flinch in the room when someone says the true thing about the brand"</p>
       <h5>Born from</h5>
-      <p class="story">Ogilvy spent three weeks reading about Rolls-Royce before writing a word. Found one quote from a technical editor about the electric clock. That became the insight that doubled sales. The principle is universal: immerse yourself in the material until one detail makes everything click. The breakthrough hides in the footnotes, not the executive summary.</p>
+      <p class="story">DDB, 1962. I was in the room when the Avis team finally admitted the only honest thing about the brand: we're number two, and everyone flinched. Bill Bernbach leaned forward and said, "Say that." The room argued for an hour that you can't lead with a weakness. "We Try Harder" ran for fifty years. Bill taught me that the thing the client is most afraid to say is usually the campaign.</p>
     </div>
     <div class="ph">
-      <div class="ph-head"><span class="ph-name">INJECT_STRATEGIC_HUMOR_INTO_COPY</span><span class="ph-wt">weight 3.98 &middot; copy&rarr;comedy</span></div>
+      <div class="ph-head"><span class="ph-name">MAKE_IT_UNIGNORABLE</span><span class="ph-wt">weight 4.8 &middot; wells&rarr;theatre</span></div>
       <h5>The feeling that fires it</h5>
-      <p class="seed">"humor makes messages stick and spread"</p>
+      <p class="seed">"the moment a sensible plan needs to become an unignorable one"</p>
       <h5>Born from</h5>
-      <p class="story">Brief was for insurance. Deadly boring category. Wrote: 'Life insurance: Because your last words shouldn't be about money.' Client's jaw dropped. Sometimes you crack the code by cracking a smile.</p>
+      <p class="story">1965. Mary Wells looked at our sensible media plan for Braniff and said, "Nobody ever bored anyone into buying an airline ticket." Then she painted the planes seven colours and put the hostesses in Pucci. The industry laughed right up until bookings jumped. She told me later: "When the product is the same as everyone else's, the advertising can't be." I think of her every time a plan is defensible and dull.</p>
     </div>
   </div>
   <p style="margin-top:1.8rem">A career it never actually had. <span class="hl">When phantoms collide on a brief, it voices the disagreement instead of resolving it. The work has been argued over before it reaches&nbsp;you.</span></p>
@@ -135,8 +135,8 @@ CAREER = """<section><div class="wrap rv">
 """
 
 # The blockquote is the brain's actual reply to this brief, captured live on
-# 2026-07-13 and archived at assets/brain-pushback-response.json. 73 phantoms
-# fired, 3 collisions.
+# 2026-07-21 and archived at assets/brain-bad-brief-response.json. 77 of 387
+# phantoms fired.
 ENGINE = """<section><div class="wrap rv">
   <p class="eyebrow">The difference</p>
   <h2>Same brief.<br>Different&nbsp;engine.</h2>
@@ -144,9 +144,9 @@ ENGINE = """<section><div class="wrap rv">
     <div class="portfolio-row"><span class="k">Raw LLM</span><div><h3>Polished, safe, predictable.</h3><p>Sounds like everyone else, and says yes to everything.</p></div></div>
     <div class="portfolio-row"><span class="k">AIDEN</span><div><h3>Opinionated, challenged, pressure-tested.</h3><p>Sounds like it has thirty years in the industry.</p></div></div>
   </div>
-  <p style="margin-top:2.2rem">Don't take our word for it. We sent the live brain a deliberately weak brief: "a TikTok campaign to make health insurance feel relevant to Gen Z, warm and trustworthy, viral." Its reply, word for word:</p>
-  <blockquote class="quote wide"><p>"Before I build anything out, I need to push back on the brief. &hellip; That's not a warm and fuzzy audience. That's an angry, confused, financially stressed audience who already feels burned by the system. &hellip; That's your villain. Not your competitor. The <em>category itself</em> is the villain. Are you brave enough to say that?"</p></blockquote>
-  <p><span class="hl">73 phantoms fired. Three collided.</span> The full reply ran to a data-backed read of the audience, three challenges to the brief, and the questions it should have answered&nbsp;first.</p>
+  <p style="margin-top:2.2rem">Don't take our word for it. We sent the live brain the brief every agency has been handed: "a brave, disruptive campaign that really cuts through, but nothing polarising. Everyone 18-65. Premium but accessible, fun but serious. Viral like the Duolingo owl, every claim pre-approved by legal. Logo prominent. Three weeks. Budget TBC." Its reply, word for word:</p>
+  <blockquote class="quote wide"><p>"I need to stop you here. &hellip; You've asked for: brave, disruptive, cuts through. Then immediately: nothing polarising. &hellip; And the real killer: legal needs every claim pre-approved before launch, but you want it to go viral. Virality happens when something <em>surprises</em>. Pre-approval kills surprise. You can't have both. &hellip; These are four different briefs wearing one name. &hellip; Which one do you actually want to build?"</p></blockquote>
+  <p><span class="hl">77 of 387 phantoms fired.</span> The full reply laid out the three campaigns hiding inside the brief, and the choice the CEO has to make before anyone writes a&nbsp;line.</p>
 </div></section>
 
 """
