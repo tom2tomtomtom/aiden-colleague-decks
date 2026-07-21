@@ -33,6 +33,12 @@ TEXT_REPLACEMENTS = [
      '<span class="tool">Brief Sharpener</span>'),
     ('<span class="score bad">30<small>/100</small></span>',
      '<span class="score bad">18<small>/100</small></span>'),
+    # belief slide: one curated card, framed as the contrast to the career
+    # slide (the library's memories vs a belief born from YOUR onboarding)
+    ('<h2>What a belief<br>looks like.</h2>',
+     '<h2>The career is the library\'s.<br>The beliefs are&nbsp;yours.</h2>'),
+    ("These are three of Town Square's own, pulled straight from the brain.",
+     "This one is nobody's but Town Square's: born from the onboarding interview a few steps back, and already outranking most of the library."),
     # board intro: the board came from the ALDI exchange, not a LEGO one
     ('This board built itself from the creator-campaign exchange:',
      'This board built itself from the ALDI exchange:'),
@@ -99,28 +105,12 @@ BOARD = '''<div class="board">
 # ----------------------------------------------------- phantom trio (tenant)
 PHANTOMS = '''<div class="phantoms">
     <div class="ph">
-      <div class="ph-head"><span class="ph-name">NO_GENERIC_WORK</span><span class="ph-wt">weight 5.0 &middot; the highest</span></div>
+      <div class="ph-head"><span class="ph-name">NO_GENERIC_WORK</span><span class="ph-wt">weight 5.0 &middot; the highest in the brain</span></div>
       <h5>The feeling that fires it</h5>
       <p class="seed">"You're reviewing the work and it's good. Polished. On-strategy. And it could run for any of their competitors with a logo swap. Your chest tightens. Because good isn't the bar. Distinctive is."</p>
       <h5>Born from</h5>
       <p class="story">Marcus, founding partner, 2004. A packaged goods client, first major pitch. The team presented work that tested well and hit all the beats. Marcus asked one question: "Could we run this for their biggest competitor?" Silence. "Then it's not finished." They missed the pitch deadline, and won the business three months later with work that could only belong to that brand. The question became the filter.</p>
       <div class="trig"><span>distinctive</span><span>generic</span><span>category</span><span>competitors</span><span>unique</span><span>brand</span></div>
-    </div>
-    <div class="ph">
-      <div class="ph-head"><span class="ph-name">KILL_WEAK_IDEAS_CHEAP</span><span class="ph-wt">weight 4.8</span></div>
-      <h5>The feeling that fires it</h5>
-      <p class="seed">"You're three concepts in and one of them is limping. Everyone can see it but no one's saying it. The room's getting polite. Every minute spent nursing a dying idea is a minute stolen from the one that could actually work."</p>
-      <h5>Born from</h5>
-      <p class="story">Sarah, creative director, 2008. Client presentation in two days. The team had spent four days polishing a concept that "had potential." She looked at the board for thirty seconds and said, "This is a maybe pretending to be a yes. Kill it. We've got 48 hours to make the other two sing." The work that went out won the business. Maybes are more expensive than nos.</p>
-      <div class="trig"><span>concept</span><span>options</span><span>directions</span><span>potential</span><span>maybe</span><span>explore</span></div>
-    </div>
-    <div class="ph">
-      <div class="ph-head"><span class="ph-name">MEANINGFUL_CHANGE_FILTER</span><span class="ph-wt">weight 4.0 &middot; the intake filter</span></div>
-      <h5>The feeling that fires it</h5>
-      <p class="seed">"The new business inquiry comes in. Big budget. Marquee brand. And you read the brief and feel nothing. You feel the pull, the revenue, the logo. And then you feel the cost: the space it takes from work that matters."</p>
-      <h5>Born from</h5>
-      <p class="story">The founding partners, 2016. A tobacco company approached with a massive budget for a "responsibility" campaign. One partner said, "We have a filter. Does this create meaningful positive change? Not for the client. For the world." The answer was no. They passed. The phrase became the intake criteria. Not every client said yes to it. The ones who did stayed for years.</p>
-      <div class="trig"><span>new business</span><span>client</span><span>brief</span><span>impact</span><span>purpose</span><span>values</span></div>
     </div>
   </div>'''
 
@@ -158,7 +148,7 @@ def rework(html):
     html = html[:i] + SHARPENER_PERSONAS + '\n    ' + html[j:]
 
     # phantom trio: the container that follows "pulled straight from the brain"
-    k = html.index('pulled straight from the brain.')
+    k = html.index('already outranking most of the library.')
     html = _swap_block(html, '<div class="phantoms">', '</div></section>',
                        PHANTOMS + '\n</div></section>', 'phantoms', search_from=k)
 
