@@ -28,16 +28,17 @@ Each deck is a single self-contained HTML file (fonts, screenshots, and video in
 
 Same ALDI creative route and demo screenshots throughout by design (one finished example, reused). In the un-treated decks (Uncommon, LEGO, Alt/Shift, Alien Baby, Kerfuffle app shots aside) the screenshots still show the original BMF demo tenant UI — worth knowing before sharing externally. Act I copy was transplanted from the aiden-deck, which lives on unchanged at its own URL for investors.
 
-**Town Square is the model client-facing deck** (2026-07-21): a real demo tenant
-(`townsquare.deck.demo.20260720@redbaez.com`) was onboarded and captured, so every
-screenshot and example is genuinely that agency's — tenant captures for all 7 app
-shots plus the cropped pipeline canvas, the tenant's real Brief Sharpener run
-(18/100) instead of HCF, an ALDI-exchange board instead of LEGO, the tenant's real
-panel quotes, and its own curated phantom in the belief slide. Mechanism:
-`town_square_rework.py` + `TOWN_SQUARE_SCREENSHOTS` in `build-decks.py`.
-Known gap: Kerfuffle and the other agency decks still carry BMF-lore phantom
-content and the HCF/LEGO examples — give them the same treatment before any of
-those decks goes in front of a client.
+**Five decks now carry the full tenant treatment** (2026-07-21): Town Square,
+Uncommon, LEGO, Alt/Shift and Alien Baby each have a real demo tenant
+(`<slug>.deck.demo.<date>@redbaez.com`), so every screenshot and example is
+genuinely that agency's — 7 tenant captures plus the cropped pipeline canvas, the
+tenant's real Brief Sharpener run instead of HCF, an ALDI-exchange board instead
+of LEGO's, real panel persona quotes, and the tenant's own top curated phantom in
+the belief slide (invented personal names curated out of displayed stories).
+Mechanism: `agency_treatment.py` + `treatment-data/<slug>/` (town-square keeps its
+original hand-built `town_square_rework.py`).
+Known gap: only Kerfuffle (already presented) and the generic template still carry
+the HCF/LEGO examples and BMF tenant screenshots.
 
 ## Adding an agency
 1. Add `("slug", "Name")` to `DECKS` in `build-decks.py`, run `python3 build-decks.py`. It writes `<slug>/index.html` from the current BMF build.

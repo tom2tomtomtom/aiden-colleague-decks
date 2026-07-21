@@ -1,0 +1,204 @@
+Tools
+Brief Sharpener
+
+A critic first, a writer second. Scored and critiqued in your agency's own voices.
+
+Brief
+Brand (optional)
+Industry (optional)
+Sharpen brief
+Discuss in chat
+Score
+21/100
+Completeness across the 8 brief dimensions.
+Clear campaign objective or goal
+3/10
+thin
+Target audience definition
+4/10
+adequate
+Brand context or guidelines
+0/10
+missing
+Specific deliverables
+6/10
+adequate
+Tone of voice or messaging direction
+2/10
+thin
+Budget or scope constraints
+0/10
+missing
+Timeline or deadlines
+0/10
+missing
+Success metrics or KPIs
+0/10
+missing
+What the brief actually says
+Extracted by the brain, before scoring.
+Objectives
+Make health insurance feel relevant to Gen Z; feel viral and shareable; brand wants to feel good and be part of the conversation
+Audience
+18-30 year olds
+Brand
+Health insurance brand (unspecified)
+Deliverables
+Hero film plus cutdowns for TikTok
+Tone
+Warm and trustworthy
+Phantom perspectives
+Your agency's own voices, reading the brief.
+The Newsworthy Filter
+2/10
+
+This brief has zero talk value. 'Warm and trustworthy health insurance for Gen Z' isn't a story anyone would tell another person. It's a brand positioning statement dressed up as a campaign idea. The brief confuses being seen with being discussed. Even if this got millions of views, would anyone screenshot it and send it to a friend? Would it generate a single Reddit thread? No. Because there's nothing surprising, nothing to argue about, nothing that reframes how you see health insurance.
+
+Fix: Find the one thing about health insurance that Gen Z finds genuinely absurd, unfair, or broken—then make that the story. If you can't make someone angry or laugh or feel seen, you can't make them share.
+
+The Unexpected Angle
+1/10
+
+The brief takes the most obvious route possible: 'Gen Z doesn't care about health insurance, so let's make content that makes them care.' That's not an angle. That's the problem restated. The first three ideas in any brainstorm will be: funny scenarios where someone needs insurance, testimonials from young people, or educational content disguised as entertainment. All dead on arrival. This brief hasn't done the work to find the human detail, the contradiction, the entry point that makes you lean forward.
+
+Fix: Ban the obvious. What's the thing Gen Z already talks about that health insurance secretly touches? Therapy access? Gig economy precarity? The anxiety of aging parents? Find the conversation they're already having and enter it sideways.
+
+The Organic Spread Advocate
+1/10
+
+This brief is designed for paid media, not voluntary sharing. 'Hero film plus cutdowns' is a media plan, not an idea architecture. The brief assumes you'll buy reach on TikTok and hope the algorithm does the work. But TikTok doesn't reward polished brand films—it rewards specificity, utility, or genuine surprise. If the idea needs paid distribution to work, it's not the idea yet. This brief has no theory of why someone would choose to share it.
+
+Fix: Design for zero paid media first. Ask: what would make one person send this to one other person? Build from that unit of voluntary attention, then amplify. If you can't answer that question, you don't have a campaign.
+
+The Story-First Strategist
+2/10
+
+There's no story here. 'Make health insurance feel relevant' isn't a narrative—it's a business goal. The brief has no protagonist, no tension, no transformation. It reads like a framework waiting for a story to fill it. Strategy without story is just a filing system. You can't brief a creative team with 'warm and trustworthy' and expect them to invent the emotional core you failed to define.
+
+Fix: Write the story first. In one minute, tell me: who is this about, what do they want, what's stopping them, and how does health insurance change the outcome? If you can't tell that story, the strategy isn't clear yet.
+
+Against the strategic frameworks
+Graded on the 7 master principles.
+Research-Led Proposition
+0/5
+
+There is no consumer promise here, provable or otherwise.
+
+Advice: Go talk to five 18-30 year olds about the last time health insurance mattered to them. Find the one thing they wish someone had told them. That's your promise.
+
+Human Truth
+1/5
+
+The brief gestures at relevance but names no actual human truth.
+
+Advice: Identify the specific feeling—fear, confusion, resentment, relief—that health insurance triggers in this audience. Make that feeling the center of the work, not the product.
+
+Creative Tension
+0/5
+
+No tension identified. The brief states a problem but offers no dramatic conflict.
+
+Advice: Name the tension: Gen Z knows they need health insurance but resent being told to care about it. Or: they want security but hate feeling like adults. Give the creative something to exploit.
+
+Impact First
+1/5
+
+The brief says 'viral and shareable' but has no theory of how to break through.
+
+Advice: Define what makes this impossible to ignore before worrying about tone. What will make someone stop scrolling? A shocking stat? A taboo truth? A format they've never seen?
+
+Cultural Ambition
+1/5
+
+The brief wants to 'be part of the conversation' but doesn't say which one or why.
+
+Advice: Pick one cultural tension Gen Z is already arguing about—precarity, mental health, distrust of institutions—and make health insurance the unexpected lens on that tension.
+
+USP Clarity
+0/5
+
+No unique selling proposition. The brand isn't even named.
+
+Advice: What does this health insurance brand do that no competitor does? If the answer is 'nothing,' then the brief must create a unique cultural position instead.
+
+Audience Empathy
+1/5
+
+The brief profiles Gen Z but shows no evidence of listening to them.
+
+Advice: Quote one real thing an 18-30 year old said about health insurance. Build the brief around that quote. Empathy requires specificity.
+
+Benchmark campaigns
+Briefs that nailed what this one is reaching for.
+Dumb Ways to Die · Metro Trains Melbourne
+
+Took a boring safety message and made it culturally unavoidable through surprise, humor, and genuine shareability. This brief needs that level of creative ambition to make health insurance matter.
+
+The Truth 'Finish It' Campaign · Truth Initiative
+
+Made anti-smoking relevant to teens by speaking their language, not lecturing them. Understood that Gen Z responds to authenticity and peer-driven narratives, not institutional voices.
+
+Liquid Death 'Murder Your Thirst' · Liquid Death
+
+Took the most boring product category (water) and made it culturally disruptive by rejecting category norms entirely. This brief needs to stop trying to make health insurance 'warm' and start making it interesting.
+
+Gaps
+Target audience definition (present but lacks detail)
+Brand context or guidelines (present but lacks detail)
+Specific deliverables (present but lacks detail)
+Tone of voice or messaging direction (present but lacks detail)
+Budget or scope constraints (missing)
+Timeline or deadlines (missing)
+Success metrics or KPIs (missing)
+Clarifying questions
+Who exactly are you trying to reach? What defines them beyond demographics (behaviours, mindset, tensions)?
+What brand context should creatives know? Include positioning, recent campaigns, and things to avoid.
+What specific assets do you need (formats, dimensions, quantities)?
+Describe the tone in 3 adjectives and one contrast ("X but never Y").
+What is the production budget range? Even "high / medium / low" helps scope creative ambition.
+What are the key milestones: brief date, creative review, final approval, live date?
+How will you know this worked? What are the primary and secondary success metrics?
+Strategic analysis
+
+This isn't a brief. It's a wish list written by someone who's never opened TikTok. 'Make health insurance feel relevant' isn't an objective—it's the entire category's problem statement. 'Warm and trustworthy' is the opposite of what works on TikTok, where authenticity beats polish and surprise beats safety. 'Viral and shareable' isn't a strategy; it's what happens when you solve for genuine talk value, which this brief doesn't even attempt.
+
+The real issue: there's no human truth here. Why would an 18-30 year old voluntarily watch content about health insurance, let alone share it? The brief assumes the brand deserves attention without earning it. It gestures at TikTok as a platform but shows zero understanding of how ideas spread there—through specificity, relatability, edge, or utility. 'Be part of the conversation' begs the question: which conversation? About what?
+
+The single biggest fix: identify the actual moment in a Gen Z person's life when health insurance becomes emotionally real—not abstractly important, but viscerally felt. That moment is your story. Everything else is just buying reach and hoping.
+
+Sharpened rewrite
+
+Brief: The Health Insurance Moment
+
+## The Problem
+Gen Z knows they need health insurance. They just don't care until the moment they desperately do. That moment—when abstract coverage becomes viscerally real—is where this campaign lives.
+
+## The Audience
+18-30 year olds in the gap: old enough to be off their parents' plan, young enough to feel invincible. Specifically: gig workers, recent grads, freelancers, anyone navigating adult systems for the first time without a handbook.
+
+## The Insight
+Health insurance doesn't feel relevant until it's too late. The gap between 'I should probably get that' and 'Oh god I need that' is where anxiety, confusion, and resentment live. Gen Z doesn't need another lecture about responsibility. They need someone to acknowledge that the system is confusing, the stakes are real, and they're not stupid for not understanding it.
+
+## The Tension
+You're supposed to feel like an adult, but the system makes you feel like a child. Health insurance is sold in language designed to obscure, not clarify. This brand has a choice: be part of that system, or be the voice that calls it out.
+
+## The Objective
+Make [BRAND] the health insurance company that actually talks to Gen Z like humans, not demographics. Shift perception from 'another institution trying to sell me something I don't understand' to 'the one that gets how broken this feels.'
+
+## The Story
+Find the real moments when health insurance stops being abstract: the ER bill, the therapy search, the prescription cost, the freelance panic, the aging parent conversation. Tell those stories with specificity and zero condescension. Make the brand the narrator who says the quiet part out loud.
+
+## The Deliverables
+TikTok-native content series. Not a hero film cut down—content designed for the feed. Each piece is a self-contained story that earns attention, not borrowed reach. Formats TBD based on the story, not the reverse.
+
+## The Tone
+Real, not warm. Honest, not trustworthy. The kind of voice that makes you send it to your group chat because it said the thing you were thinking. No institutional polish. No false empathy. Just someone who gets it.
+
+## Success Looks Like
+Organic shares. Screenshots in group chats. Reddit threads. Comments that say 'finally, someone said it.' Measure voluntary conversation volume, not just views. If people aren't discussing it, it didn't work.
+
+## The Forcing Question
+Would someone send this to a friend who just got their first ER bill? If not, start again.
+
+Recent runs
+21/100 · brief · 7/21/2026, 11:17:43 AM

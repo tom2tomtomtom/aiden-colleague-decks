@@ -1,0 +1,214 @@
+Tools
+Brief Sharpener
+
+A critic first, a writer second. Scored and critiqued in your agency's own voices.
+
+Brief
+Brand (optional)
+Industry (optional)
+Sharpen brief
+Discuss in chat
+Score
+19/100
+Completeness across the 8 brief dimensions.
+Clear campaign objective or goal
+3/10
+thin
+Target audience definition
+2/10
+thin
+Brand context or guidelines
+0/10
+missing
+Specific deliverables
+6/10
+adequate
+Tone of voice or messaging direction
+2/10
+thin
+Budget or scope constraints
+0/10
+missing
+Timeline or deadlines
+0/10
+missing
+Success metrics or KPIs
+0/10
+missing
+What the brief actually says
+Extracted by the brain, before scoring.
+Objectives
+Make health insurance feel relevant to Gen Z; feel viral and shareable; brand wants to feel good and be part of the conversation
+Audience
+18-30 year olds
+Brand
+[Health insurance brand - not specified]
+Deliverables
+Hero film plus cutdowns for TikTok
+Tone
+Warm and trustworthy
+Phantom perspectives
+Your agency's own voices, reading the brief.
+The Decoration Rejecter
+2/10
+
+'Warm and trustworthy' is wallpaper. 'Viral and shareable' is a hope, not a strategy. This brief treats creativity like seasoning you add at the end. There's no business problem here, just a media format and a vibe. What is this campaign actually trying to change? Market share? Purchase intent? Brand consideration among a group that thinks insurance is a scam? Without that, we're making content, not advertising.
+
+Fix: Rewrite the objective as a business outcome: 'Increase insurance consideration among 18-30s by making the cost of NOT having coverage feel real and immediate, not abstract and distant.'
+
+The Necessity Advocate
+1/10
+
+This brand wants to 'be part of the conversation' but hasn't earned the right. What does this insurance company DO for Gen Z that they actually need? Not 'coverage' — everyone offers that. What specific problem in their lives does this solve? The brief talks about relevance but doesn't justify existence. Gen Z is drowning in student debt, gig economy precarity, and mental health crises. If this brand isn't solving one of those, it's just noise.
+
+Fix: Identify the single thing this brand does that Gen Z is already desperately trying to solve themselves (e.g., 'We cover therapy from day one, no deductible' or 'We don't deny claims for pre-existing conditions'). Make that the entire brief.
+
+The Tone-First Strategist
+3/10
+
+Tone is listed as an afterthought ('warm and trustworthy') when it should be the strategic foundation. How should Gen Z FEEL about insurance after this campaign? Not 'warm' — that's meaningless. Relieved? Empowered? Less alone? The emotional shift is the strategy. Right now tone is treated like a production note, not a brief decision.
+
+Fix: Move tone upstream: 'This campaign should make insurance feel like the smart, slightly cynical friend who's got your back when shit gets real — not the corporate parent lecturing you about responsibility.'
+
+The Cultural Specificity Defender
+2/10
+
+'Gen Z' is not an audience. It's a demographic laziness. Which Gen Z? The ones making $80k in tech or the ones working three gig jobs? The ones with parental safety nets or the ones who aged out of foster care? TikTok Gen Z or LinkedIn Gen Z? This brief wants to be 'part of the conversation' but hasn't identified which conversation or who's having it.
+
+Fix: Pick a specific Gen Z cohort with a specific relationship to health insurance. Example: 'Gig workers 22-28 who've delayed seeing a doctor because they're not sure if they're covered and can't afford to find out.'
+
+The Brave-Idea Protector
+1/10
+
+This brief is pre-rejected. 'Warm and trustworthy' and 'viral' are contradictory — one is safe, one is disruptive. The client wants the outcome of brave work (virality, cultural conversation) without the risk of brave work (saying something that might alienate someone). Any idea that survives this brief will be toothless.
+
+Fix: Reframe the risk: 'The safe route is making another insurance ad that Gen Z scrolls past. The dangerous route is admitting insurance is confusing, expensive, and designed to fuck you over — and positioning this brand as the one that's different. That's the only route to virality.'
+
+Against the strategic frameworks
+Graded on the 7 master principles.
+Research-Led Proposition
+0/5
+
+There is no proposition here, provable or otherwise. Just a format and a feeling.
+
+Advice: Go talk to 50 Gen Z-ers about the last time they needed healthcare and didn't know if they could afford it. Find the one thing they all say. That's your proposition.
+
+Human Truth
+1/5
+
+The brief gestures at relevance but names no human truth. Why don't 18-30 year olds buy health insurance? Fear of cost? Invincibility bias? Confusion? That's the truth you need.
+
+Advice: Complete this sentence from the audience's perspective: 'I know I should get health insurance, but honestly...' That 'but honestly' is your human truth.
+
+Creative Tension
+0/5
+
+No tension identified. The brief wants insurance to 'feel good' when the entire category is built on fear and mistrust. That's the tension. Name it.
+
+Advice: The tension is: 'You feel invincible, but one ER visit will bankrupt you.' Or: 'You need insurance, but every brand feels like a scam.' Pick one and make it the spine of the brief.
+
+Impact First
+1/5
+
+'Viral and shareable' is the goal, but there's no strategy for breaking through. What will make Gen Z stop scrolling? Not warmth. Not trust. Probably truth.
+
+Advice: Define the pattern interrupt: what will this campaign do in the first 0.5 seconds that makes stopping feel more rewarding than scrolling? Shock? Humor? Recognition? Decide.
+
+Cultural Ambition
+2/5
+
+Wants to be 'part of the conversation' but doesn't define what conversation or what the brand's role in it should be. This is media-plan thinking, not cultural ambition.
+
+Advice: Aim higher: 'This campaign should change how Gen Z talks about health insurance — from something you avoid thinking about to something you brag about having figured out.'
+
+USP Clarity
+0/5
+
+No unique selling proposition. No claim. No benefit. Just a channel and a vibe.
+
+Advice: What does this insurance do that no competitor does? If the answer is 'nothing,' you're selling on brand, not product — which means the creative has to work three times as hard.
+
+Audience Empathy
+1/5
+
+'18-30 year olds' is not empathy. It's a media buy. There's no evidence anyone has listened to this audience or understands what they actually think about insurance.
+
+Advice: Spend a week reading r/povertyfinance and r/healthinsurance. Come back with three verbatim quotes that break your heart. Those are your audience insights.
+
+Benchmark campaigns
+Briefs that nailed what this one is reaching for.
+Dumb Ways to Die · Metro Trains Melbourne
+
+Made safety (boring, preachy category) feel culturally relevant to young people by leading with entertainment and truth, not lecturing. Became a conversation, not an ad.
+
+The Truth Campaign (anti-smoking) · Truth Initiative
+
+Reached young people on a health topic by rejecting warmth and trust in favor of anger and rebellion. Made the issue feel urgent and personal, not abstract.
+
+Like a Girl · Always
+
+Took a functional product category and made it culturally significant by naming a tension young people already felt but hadn't articulated. Changed a conversation, not just a brand.
+
+Gaps
+Target audience definition (present but lacks detail)
+Brand context or guidelines (present but lacks detail)
+Specific deliverables (present but lacks detail)
+Tone of voice or messaging direction (present but lacks detail)
+Budget or scope constraints (missing)
+Timeline or deadlines (missing)
+Success metrics or KPIs (missing)
+Clarifying questions
+Who exactly are you trying to reach? What defines them beyond demographics (behaviours, mindset, tensions)?
+What brand context should creatives know? Include positioning, recent campaigns, and things to avoid.
+What specific assets do you need (formats, dimensions, quantities)?
+Describe the tone in 3 adjectives and one contrast ("X but never Y").
+What is the production budget range? Even "high / medium / low" helps scope creative ambition.
+What are the key milestones: brief date, creative review, final approval, live date?
+How will you know this worked? What are the primary and secondary success metrics?
+Strategic analysis
+
+This isn't a brief. It's a wish list written by someone who's seen TikTok but doesn't understand it. 'Feel viral and shareable' is not a strategy — it's what happens when you make something that matters to people. You can't brief virality. You can only brief truth.
+
+The real problem: health insurance is fundamentally about fear (illness, debt, mortality) being sold to people who feel invincible. That's the tension. That's the brief. But instead of naming it, this brief hides behind 'warm and trustworthy' and 'part of the conversation.' What conversation? The one where 25-year-olds joke about not being able to afford therapy? That one?
+
+The single biggest fix: stop trying to make insurance feel good. Make it feel necessary. Gen Z doesn't need another brand trying to be their friend. They need a brand that understands they're terrified of medical debt and have no idea how any of this works. Start there.
+
+Sharpened rewrite
+
+The Brief
+
+What we're trying to change:
+Right now, 18-30 year olds think health insurance is a scam they can't afford and don't need until it's too late. We need to make [BRAND] the first insurance company that feels like it's on their side — not selling them something, but solving a problem they're already losing sleep over.
+
+Who we're talking to:
+Gig economy Gen Z (22-28) who've delayed seeing a doctor because they're not sure what's covered, can't afford to find out, and are one medical emergency away from financial catastrophe. They joke about it on TikTok because gallows humor is cheaper than a deductible.
+
+The human truth:
+"I know I should have health insurance, but honestly, I'm more scared of the bill from the insurance company than I am of being sick."
+
+The tension:
+You feel invincible, but you're one ER visit away from bankruptcy. You need insurance, but every brand feels designed to confuse and deny you.
+
+What this campaign must do:
+Make health insurance feel like the smartest thing you've figured out this year — not a boring adult obligation, but a relief. A weight off. The thing that lets you stop worrying and start living.
+
+The idea should:
+- Name the fear out loud (medical debt, claim denials, confusion) instead of pretending insurance is aspirational
+- Show what life feels like AFTER you've sorted it, not the process of sorting it
+- Speak like a peer who's been through it, not a brand trying to be your friend
+
+Deliverables:
+TikTok hero film (60s max) plus 15s/30s cutdowns optimized for feed. Must work with sound off.
+
+Tone:
+Honest bordering on cynical. The friend who tells you the truth because they care, not the brand that wants you to feel good. Less 'warm and trustworthy,' more 'I've got your back when shit gets real.'
+
+Success looks like:
+Gen Z talking about health insurance differently — from something they avoid to something they're relieved they figured out. Measure: brand consideration lift among 22-28s, organic shares/saves, comment sentiment shift from 'insurance is a scam' to 'this brand gets it.'
+
+What we're NOT doing:
+Another pastel-colored, ukulele-backed ad where young people laugh in fields. No lecturing about responsibility. No pretending insurance is fun. If it feels like an ad, we've failed.
+
+Recent runs
+19/100 · brief · 7/21/2026, 11:40:44 AM
+20/100 · brief · 7/21/2026, 11:26:58 AM

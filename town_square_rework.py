@@ -103,7 +103,7 @@ PHANTOMS = '''<div class="phantoms">
       <h5>The feeling that fires it</h5>
       <p class="seed">"You're reviewing the work and it's good. Polished. On-strategy. And it could run for any of their competitors with a logo swap. Your chest tightens. Because good isn't the bar. Distinctive is."</p>
       <h5>Born from</h5>
-      <p class="story">Marcus, founding partner, 2004. A packaged goods client, first major pitch. The team presented work that tested well and hit all the beats. Marcus asked one question: "Could we run this for their biggest competitor?" Silence. "Then it's not finished." They missed the pitch deadline, and won the business three months later with work that could only belong to that brand. The question became the filter.</p>
+      <p class="story">A founding partner, 2004. A packaged goods client, first major pitch. The team presented work that tested well and hit all the beats. One question came back: "Could we run this for their biggest competitor?" Silence. "Then it's not finished." They missed the pitch deadline, and won the business three months later with work that could only belong to that brand. The question became the filter.</p>
       <div class="trig"><span>distinctive</span><span>generic</span><span>category</span><span>competitors</span><span>unique</span><span>brand</span></div>
     </div>
   </div>'''
