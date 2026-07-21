@@ -297,6 +297,27 @@ def replacements(name: str | None) -> list[tuple[str, str]]:
     return reps
 
 
+def reduce_belief_slide(html, name):
+    """One curated card, framed as the contrast to the career slide (the
+    library's memories vs a belief born from this agency's onboarding).
+    Applies to every generated deck; town-square then swaps in its real
+    tenant card (see town_square_rework.py)."""
+    who = name or "the agency"
+    old_h2 = '<h2>What a belief<br>looks like.</h2>'
+    new_h2 = "<h2>The career is the library's.<br>The beliefs are&nbsp;yours.</h2>"
+    old_intro = f"These are three of {who}'s own, pulled straight from the brain."
+    new_intro = f"This one is nobody's but {who}'s: born from the onboarding interview a few steps back, and already outranking most of the library."
+    assert old_h2 in html, "belief slide h2 not found"
+    assert old_intro in html, f"belief slide intro not found for {who}"
+    html = html.replace(old_h2, new_h2).replace(old_intro, new_intro)
+    k = html.index(new_intro)
+    start = html.index('<div class="phantoms">', k)
+    first_card = html.index('<div class="ph">', start)
+    second_card = html.index('<div class="ph">', first_card + 10)
+    end = html.index('</div></section>', start)
+    return html[:second_card] + '</div>\n' + html[end:]
+
+
 def build_deck(slug: str, name: str | None):
     html = SOURCE.read_text(encoding="utf-8")
 
@@ -327,6 +348,8 @@ def build_deck(slug: str, name: str | None):
         if old not in html:
             missing.append(old)
         html = html.replace(old, new)
+
+    html = reduce_belief_slide(html, name)
 
     if slug == "kerfuffle":
         treatment_b64 = base64.b64encode(KERFUFFLE_TREATMENT_IMG.read_bytes()).decode()

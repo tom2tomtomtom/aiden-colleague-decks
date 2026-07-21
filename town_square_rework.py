@@ -33,12 +33,6 @@ TEXT_REPLACEMENTS = [
      '<span class="tool">Brief Sharpener</span>'),
     ('<span class="score bad">30<small>/100</small></span>',
      '<span class="score bad">18<small>/100</small></span>'),
-    # belief slide: one curated card, framed as the contrast to the career
-    # slide (the library's memories vs a belief born from YOUR onboarding)
-    ('<h2>What a belief<br>looks like.</h2>',
-     '<h2>The career is the library\'s.<br>The beliefs are&nbsp;yours.</h2>'),
-    ("These are three of Town Square's own, pulled straight from the brain.",
-     "This one is nobody's but Town Square's: born from the onboarding interview a few steps back, and already outranking most of the library."),
     # board intro: the board came from the ALDI exchange, not a LEGO one
     ('This board built itself from the creator-campaign exchange:',
      'This board built itself from the ALDI exchange:'),
